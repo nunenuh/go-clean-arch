@@ -16,7 +16,6 @@ func NewAuthHandler(authRoute fiber.Router) {
 	authRoute.Post("/login", handler.signInUser)
 	authRoute.Post("/logout", handler.signOutUser)
 	authRoute.Get("private", JWTMiddleware(), handler.privateRoute)
-
 }
 
 func (h *AuthHandler) signInUser(c *fiber.Ctx) error {
