@@ -9,6 +9,14 @@ type userService struct {
 	userRepository UserRepository
 }
 
+type UserService interface {
+	GetUsers(ctx context.Context) (*[]User, error)
+	GetUser(ctx context.Context, userID int) (*User, error)
+	CreateUser(ctx context.Context, user *User) error
+	UpdateUser(ctx context.Context, userID int, user *User) error
+	DeleteUser(ctx context.Context, userID int) error
+}
+
 func NewUserService(userRepository UserRepository) UserService {
 	return &userService{userRepository: userRepository}
 }
